@@ -1,51 +1,70 @@
-# 🛡️ FraudControl - A Defesa Inteligente contra Fraudes Financeiras
+<h1 align="center">
+  <img src="https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/shield-alert.svg" width="40" alt="Shield"/>
+  <br>
+  FraudControl - Enterprise Anti-Fraud & Compliance Dashboard
+</h1>
 
-Bem-vindo ao **FraudControl**! 
+<p align="center">
+  Uma plataforma administrativa moderna focada na <b>redução de SLA de análise de fraudes</b>, mitigação de riscos financeiros e auditoria de segurança (Compliance).
+</p>
 
-Se você não é da área de tecnologia, pense neste projeto como a "Torre de Controle" de um grande banco. É aqui que os especialistas em segurança visualizam, investigam e bloqueiam tentativas de golpes (como um Pix falso ou uma transação internacional suspeita) antes que o dinheiro do cliente seja perdido. 
-
-Se você é da área de tecnologia, este é um **Painel de Administração (Dashboard) de nível Empresarial**, construído com as melhores práticas de Front-end para lidar com alta densidade de dados e proporcionar uma Experiência do Usuário (UX) impecável.
-
-![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
-![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
-![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
-
----
-
-## 🚀 O que este sistema faz?
-
-A ideia central é facilitar a vida de quem trabalha combatendo fraudes (analistas de compliance). O sistema resolve problemas reais de segurança através das seguintes telas e funcionalidades:
-
-1. **Visão Geral (Dashboard):** Um resumo em tempo real do que está acontecendo no banco. Alertas críticos, dinheiro retido e clientes em risco, tudo em uma tela limpa e sem poluição visual.
-2. **Dossiê de Investigação:** Quando o analista clica em uma transação suspeita, o sistema abre uma tela detalhada revelando informações ocultas: a origem do IP da pessoa, o aparelho de celular que ela usou, e o **Score de Fraude da Inteligência Artificial** (ex: 98% de chance de ser um golpe).
-3. **Bloqueio Reativo:** Diferente de telas estáticas, ao clicar em "Bloquear Conta", o sistema reage na hora, travando a conta do fraudador em tempo real.
-4. **Segurança Extrema (MFA):** Para bloquear alguém ou liberar um Pix alto, o analista é obrigado a digitar um PIN de 4 dígitos. Isso simula uma Assinatura Digital, garantindo que o clique não foi um "acidente".
-5. **Logs de Auditoria (O "X-9" do sistema):** Tudo o que o analista faz fica gravado para sempre. Se alguém perguntar "quem bloqueou o João?", a aba de Auditoria terá o registro de data, hora e nome do responsável.
-6. **Tela de Proteção Anti-Espião:** Se o analista se levantar para ir ao banheiro e deixar o sistema aberto, a tela inteira é borrada e bloqueada (Auto-Lock). Nenhuma informação vaza.
+<p align="center">
+  <img alt="React" src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB">
+  <img alt="Vite" src="https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white">
+  <img alt="TypeScript" src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white">
+  <img alt="TailwindCSS" src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white">
+</p>
 
 ---
 
-## 🧠 Arquitetura e Decisões Técnicas (Para Devs / Recrutadores)
+## 📖 Visão Geral do Produto (Business Value)
 
-Este projeto foi desenhado sob a ótica de um **Engenheiro de Software Pleno/Sênior**. O código não foi feito apenas para "funcionar", mas para ser sustentável, seguro e componentizado.
+O **FraudControl** não é apenas uma interface de tabelas; é uma ferramenta de suporte à decisão crítica. Em instituições bancárias, o tempo que um analista leva para julgar se uma transação é legítima ou fraudulenta afeta diretamente a experiência do cliente e a saúde financeira da empresa.
 
-- **Gerenciamento de Estado Dinâmico:** Utilização avançada de `useState` no React para garantir que todas as tabelas e painéis reajam a cliques instantaneamente sem recarregar a página.
-- **Progressive Disclosure (Revelação Progressiva):** Para não sobrecarregar cognitivamente o usuário, a tabela principal mostra apenas o básico. Dados pesados (Reputação de Rede, IPs e Histórico) ficam escondidos e só aparecem quando o modal "Ver Detalhes" é invocado.
-- **Sistema de Cores (UI/UX):** Em operações de risco, a fadiga visual leva a erros humanos. Cores fortes (Vermelho e Verde) foram usadas estritamente para ações decisivas (Bloquear/Aprovar). O resto do layout usa tons neutros em um ambiente híbrido de *Glassmorphism*.
-- **Roteamento Inteligente:** Construído como uma *Single Page Application* (SPA) rápida usando `react-router-dom`.
+Este projeto resolve o problema da fragmentação de informações. Ele agrega **Telemetria de Dispositivos, Reputação de IPs (Geofencing), Histórico do Cliente e Scores de Inteligência Artificial** em uma única camada visual. O objetivo arquitetural foi reduzir o tempo de investigação (*Time to Resolution*) de minutos para segundos, evitando a fadiga cognitiva do operador humano.
 
 ---
 
-## 🛠️ Como rodar o projeto na sua máquina?
+## 🔒 Funcionalidades de Segurança e Compliance
 
-É super simples testar! Você só precisa ter o `Node.js` instalado.
+Para garantir que o sistema não apenas detecte ameaças externas, mas também se proteja de ameaças internas (Insiders) e vazamentos de tela, o FraudControl conta com:
 
-1. **Faça o clone (baixe) o repositório:**
+*   **Autenticação MFA (Assinatura Digital) para Ações Destrutivas:** O analista não pode aprovar ou bloquear uma transação com um "clique acidental". O sistema intercepta o fluxo e exige um PIN de Segurança de 4 dígitos.
+*   **Trilha de Auditoria (Audit Logs Imutáveis):** Uma aba dedicada ao Compliance. Registra estritamente *quem* fez *o que*, a *qual* hora, apontando o autor da ação (Admin, Analista ou o próprio Motor da IA).
+*   **Gestão Dinâmica de Motor de Regras:** Uma página de configurações onde supervisores podem alterar limites operacionais (ex: gatilho de Pix de Alto Valor) e travas geográficas (ex: bloquear requisições da rede Tor).
+*   **Auto-Lock (Bloqueio de Sessão por Inatividade):** Se o analista se ausentar do posto de trabalho, o sistema ativa um overlay *Glassmorphism* que borra toda a interface (prevenindo vazamento de dados na tela) e exige a senha de destravamento.
+
+---
+
+## 🧠 Arquitetura de Software e UX/UI
+
+Desenvolvido sob os princípios de **Engenharia de Front-end Moderna**, a aplicação é uma *Single Page Application (SPA)* rápida e responsiva.
+
+### Padrões de Design de Interface
+1. **Redução de Carga Cognitiva (Progressive Disclosure):** Listas principais contêm apenas metadados essenciais. A análise profunda da telemetria e o Score de Risco estão encapsulados no fluxo de "Dossiê do Alerta", evitando poluição visual.
+2. **Psicologia das Cores:** Em sistemas críticos, a fadiga visual induz ao erro. O layout utiliza tons pastéis frios e fundos limpos, reservando cores saturadas de alerta (Vermelho, Amarelo e Verde) estritamente para o *status* de risco e botões de decisão.
+
+### Gerenciamento de Estado e Reatividade
+A aplicação utiliza o ecossistema React (`useState`, `useEffect`) para simular reatividade em tempo real (Mock reativo). Ao invocar uma ação de bloqueio, o estado transita instantaneamente, as *badges* mudam de cor, os logs são "gerados" e a UI reflete a alteração com animações fluidas, fornecendo *feedback* instantâneo ao usuário.
+
+---
+
+## 🚀 Como testar localmente (Getting Started)
+
+A aplicação foi otimizada com **Vite** para inicialização em frações de segundo.
+
+### Pré-requisitos
+*   Node.js (v18+)
+*   NPM ou Yarn
+
+### Passo a Passo
+
+1. **Clone o repositório:**
 ```bash
 git clone https://github.com/Lucas-Alves123/fraudcontrol.git
 ```
 
-2. **Entre na pasta principal do sistema:**
+2. **Acesse o diretório do frontend:**
 ```bash
 cd fraudcontrol/frontend
 ```
@@ -55,19 +74,33 @@ cd fraudcontrol/frontend
 npm install
 ```
 
-4. **Ligue o servidor local:**
+4. **Inicie o ambiente de desenvolvimento:**
 ```bash
 npm run dev
 ```
 
-Abra o seu navegador e acesse o endereço que aparecerá no terminal (geralmente `http://localhost:5173`). Para passar pela tela de login de simulação, use:
-*   **E-mail:** `admin@banco.com.br`
-*   **Senha:** `admin`
+Abra o seu navegador no endereço fornecido pelo Vite (geralmente `http://localhost:5173`). 
+> **Credenciais de Teste:**
+> E-mail: `admin@banco.com.br`
+> Senha: `admin`
+
+---
+
+## 📸 Demonstração Visual (Screenshots)
+
+*(Dica: Substitua estes textos pelos links reais dos seus screenshots após upar no Github)*
+
+*   **[Insira Imagem 1: Tela de Login Dark]** - *Acesso restrito corporativo.*
+*   **[Insira Imagem 2: Dashboard]** - *Visão geral dos KPIs e transações.*
+*   **[Insira Imagem 3: Modal de Dossiê de Alerta]** - *Onde a investigação cruza telemetria, IP e Scores de Risco.*
+*   **[Insira Imagem 4: Bloqueio de Tela]** - *Prevenção de vazamento de dados.*
 
 ---
 
 ## 👨‍💻 Autor
 
-Projeto desenvolvido e arquitetado por **Lucas Alves**. 
+Criado e arquitetado por **Lucas Alves**. 
 
-Focado em criar soluções que unem interfaces modernas com regras de negócio seguras e escaláveis. Se achou o projeto interessante, bora nos conectar no [LinkedIn](https://www.linkedin.com/in/lucas-alves/)!
+Entusiasta da criação de produtos digitais robustos, unindo código limpo (Clean Code) a interfaces de alta performance. 
+Conecte-se comigo:
+🔗 **[Meu LinkedIn](https://www.linkedin.com/in/lucas-alves/)**
