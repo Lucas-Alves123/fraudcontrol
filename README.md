@@ -1,7 +1,7 @@
 <h1 align="center">
   <img src="https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/shield-alert.svg" width="40" alt="Shield"/>
   <br>
-  FraudControl - Enterprise Anti-Fraud & Compliance Dashboard
+  FraudControl - Enterprise Anti-Fraud Dashboard
 </h1>
 
 <p align="center">
@@ -12,88 +12,70 @@
   <img alt="React" src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB">
   <img alt="Vite" src="https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white">
   <img alt="TypeScript" src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white">
-  <img alt="TailwindCSS" src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white">
 </p>
 
 ---
 
-## 📖 Visão Geral do Produto (Business Value)
+## 📖 O que é este sistema?
 
-O **FraudControl** não é apenas uma interface de tabelas; é uma ferramenta de suporte à decisão crítica. Em instituições bancárias, o tempo que um analista leva para julgar se uma transação é legítima ou fraudulenta afeta diretamente a experiência do cliente e a saúde financeira da empresa.
+O **FraudControl** é um painel de controle (*Dashboard*) criado para profissionais de segurança, prevenção a fraudes e *compliance* em instituições financeiras. 
 
-Este projeto resolve o problema da fragmentação de informações. Ele agrega **Telemetria de Dispositivos, Reputação de IPs (Geofencing), Histórico do Cliente e Scores de Inteligência Artificial** em uma única camada visual. O objetivo arquitetural foi reduzir o tempo de investigação (*Time to Resolution*) de minutos para segundos, evitando a fadiga cognitiva do operador humano.
+A ideia do sistema é atuar como uma **Torre de Controle**. Em vez de usar planilhas e dezenas de abas soltas, o analista financeiro usa essa interface para visualizar tudo que está acontecendo no banco em tempo real. O sistema não apenas lista as transações, mas também:
+*   Avisa quando um cliente faz um Pix fora do padrão financeiro dele.
+*   Mostra qual aparelho (celular/PC) e qual conexão (IP) o cliente usou (alertando se for um acesso pela Deep Web ou VPN).
+*   Fornece um Score de Fraude gerado por IA para ajudar o analista humano a tomar uma decisão rápida.
+*   Permite o bloqueio reativo e imediato de uma conta suspeita, evitando que o golpista leve o dinheiro.
 
----
-
-## 🔒 Funcionalidades de Segurança e Compliance
-
-Para garantir que o sistema não apenas detecte ameaças externas, mas também se proteja de ameaças internas (Insiders) e vazamentos de tela, o FraudControl conta com:
-
-*   **Autenticação MFA (Assinatura Digital) para Ações Destrutivas:** O analista não pode aprovar ou bloquear uma transação com um "clique acidental". O sistema intercepta o fluxo e exige um PIN de Segurança de 4 dígitos.
-*   **Trilha de Auditoria (Audit Logs Imutáveis):** Uma aba dedicada ao Compliance. Registra estritamente *quem* fez *o que*, a *qual* hora, apontando o autor da ação (Admin, Analista ou o próprio Motor da IA).
-*   **Gestão Dinâmica de Motor de Regras:** Uma página de configurações onde supervisores podem alterar limites operacionais (ex: gatilho de Pix de Alto Valor) e travas geográficas (ex: bloquear requisições da rede Tor).
-*   **Auto-Lock (Bloqueio de Sessão por Inatividade):** Se o analista se ausentar do posto de trabalho, o sistema ativa um overlay *Glassmorphism* que borra toda a interface (prevenindo vazamento de dados na tela) e exige a senha de destravamento.
+Tudo isso foi desenhado focado em **Velocidade** e **Ergonomia**. O design é limpo de propósito para evitar que os olhos do analista se cansem (fadiga visual) após analisar centenas de transações ao longo do dia.
 
 ---
 
-## 🧠 Arquitetura de Software e UX/UI
+## 🛠️ Ferramentas Utilizadas (Stack Tecnológico)
 
-Desenvolvido sob os princípios de **Engenharia de Front-end Moderna**, a aplicação é uma *Single Page Application (SPA)* rápida e responsiva.
+O projeto foi construído utilizando as ferramentas mais modernas do ecossistema de desenvolvimento Front-end:
 
-### Padrões de Design de Interface
-1. **Redução de Carga Cognitiva (Progressive Disclosure):** Listas principais contêm apenas metadados essenciais. A análise profunda da telemetria e o Score de Risco estão encapsulados no fluxo de "Dossiê do Alerta", evitando poluição visual.
-2. **Psicologia das Cores:** Em sistemas críticos, a fadiga visual induz ao erro. O layout utiliza tons pastéis frios e fundos limpos, reservando cores saturadas de alerta (Vermelho, Amarelo e Verde) estritamente para o *status* de risco e botões de decisão.
-
-### Gerenciamento de Estado e Reatividade
-A aplicação utiliza o ecossistema React (`useState`, `useEffect`) para simular reatividade em tempo real (Mock reativo). Ao invocar uma ação de bloqueio, o estado transita instantaneamente, as *badges* mudam de cor, os logs são "gerados" e a UI reflete a alteração com animações fluidas, fornecendo *feedback* instantâneo ao usuário.
+*   **React (v18):** Biblioteca principal utilizada para a construção de toda a interface de usuário baseada em componentes reutilizáveis.
+*   **Vite:** Ferramenta de *Build* super rápida, substituindo o Webpack, o que garante inicialização e *Hot Module Replacement* instantâneos durante o desenvolvimento.
+*   **TypeScript:** Traz tipagem estática ao JavaScript, o que evita bugs inesperados em produção e ajuda o editor de código a entender melhor os dados trafegados.
+*   **CSS / UI Design (Glassmorphism):** O visual premium que simula texturas de vidro foi desenvolvido com CSS puro e variáveis semânticas, dispensando a sobrecarga de frameworks enormes.
+*   **React Router Dom:** Gerenciamento das rotas, transformando a aplicação em uma verdadeira *Single Page Application* (SPA) rápida e sem recarregamentos (telas de Dashboard, Alertas, Clientes, etc.).
+*   **Lucide React:** Biblioteca de ícones moderna, leve e vetorial, escolhida para dar o aspecto de interface corporativa limpa.
+*   **React Hot Toast:** Utilizada para exibir os alertas de sistema ("Bloqueado com sucesso", "Transação aprovada") pulando na tela, dando o *feedback* imediato que o analista de operações exige.
 
 ---
 
-## 🚀 Como testar localmente (Getting Started)
+## 🚀 Como rodar o projeto localmente (Passo a Passo)
 
-A aplicação foi otimizada com **Vite** para inicialização em frações de segundo.
+Siga os passos abaixo para baixar e rodar este sistema na sua própria máquina (Você vai precisar do `Node.js` instalado).
 
-### Pré-requisitos
-*   Node.js (v18+)
-*   NPM ou Yarn
-
-### Passo a Passo
-
-1. **Clone o repositório:**
+1. **Baixe o projeto (Clone o repositório):**
+Abra o seu terminal (Prompt de Comando ou VSCode) e digite:
 ```bash
 git clone https://github.com/Lucas-Alves123/fraudcontrol.git
 ```
 
-2. **Acesse o diretório do frontend:**
+2. **Acesse a pasta do frontend:**
 ```bash
 cd fraudcontrol/frontend
 ```
 
-3. **Instale as dependências:**
+3. **Instale as ferramentas e bibliotecas:**
+Esse comando baixa todas as ferramentas (React, Vite, ícones) listadas acima que fazem o projeto funcionar.
 ```bash
 npm install
 ```
 
-4. **Inicie o ambiente de desenvolvimento:**
+4. **Inicie o sistema:**
 ```bash
 npm run dev
 ```
 
-Abra o seu navegador no endereço fornecido pelo Vite (geralmente `http://localhost:5173`). 
-> **Credenciais de Teste:**
-> E-mail: `admin@banco.com.br`
-> Senha: `admin`
+Abra o seu navegador (Chrome/Edge/Firefox) e acesse o endereço que o terminal gerar (geralmente será `http://localhost:5173`).
 
----
-
-## 📸 Demonstração Visual (Screenshots)
-
-*(Dica: Substitua estes textos pelos links reais dos seus screenshots após upar no Github)*
-
-*   **[Insira Imagem 1: Tela de Login Dark]** - *Acesso restrito corporativo.*
-*   **[Insira Imagem 2: Dashboard]** - *Visão geral dos KPIs e transações.*
-*   **[Insira Imagem 3: Modal de Dossiê de Alerta]** - *Onde a investigação cruza telemetria, IP e Scores de Risco.*
-*   **[Insira Imagem 4: Bloqueio de Tela]** - *Prevenção de vazamento de dados.*
+### Como entrar no sistema (Login)
+Você será recebido por uma tela de login de segurança. Use as credenciais de teste abaixo para entrar:
+> **E-mail:** `admin@banco.com.br`
+> **Senha:** `admin`
 
 ---
 
@@ -101,6 +83,6 @@ Abra o seu navegador no endereço fornecido pelo Vite (geralmente `http://localh
 
 Criado e arquitetado por **Lucas Alves**. 
 
-Entusiasta da criação de produtos digitais robustos, unindo código limpo (Clean Code) a interfaces de alta performance. 
+Entusiasta da criação de produtos digitais robustos, unindo código limpo (Clean Code) a interfaces de alta performance focadas no usuário. 
 Conecte-se comigo:
 🔗 **[Meu LinkedIn](https://www.linkedin.com/in/lucas-alves/)**
