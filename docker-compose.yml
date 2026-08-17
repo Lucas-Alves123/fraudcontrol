@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: fraudcontrol_db
+    restart: always
+    environment:
+      POSTGRES_USER: fraudcontrol_user
+      POSTGRES_PASSWORD: fraudcontrol_password
+      POSTGRES_DB: fraudcontrol_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  api:
+    build: 
+      context: ./backend
+    container_name: fraudcontrol_api
+    restart: always
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    volumes:
+      - ./backend:/app
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:
