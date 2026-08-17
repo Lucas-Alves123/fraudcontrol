@@ -77,12 +77,4 @@ Você será recebido por uma tela de login de segurança. Use as credenciais de 
 > **E-mail:** `admin@banco.com.br`
 > **Senha:** `admin`
 
----
 
-## 👨‍💻 Autor
-
-Criado e arquitetado por **Lucas Alves**. 
-
-Entusiasta da criação de produtos digitais robustos, unindo código limpo (Clean Code) a interfaces de alta performance focadas no usuário. 
-Conecte-se comigo:
-🔗 **[Meu LinkedIn](https://www.linkedin.com/in/lucas-alves/)**
